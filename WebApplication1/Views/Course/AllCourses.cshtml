@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "AllCourses";
+}
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">degree</th>
+      <th scope="col">minDegree</th>
+      <th scope="col">deartment</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+   
+        @foreach (allcoursesVM c in @Model)
+        {
+            <tr>
+              <td>@c.Id</td>
+              <td>@c.Name</td>
+              <td>@c.degree</td>
+              <td>@c.minDegree</td>
+              <td>@c.dept_Name</td>
+             @* <td> <a asp-action="updateCourse" asp-controller="Course" class="btn btn-warning" asp-route-id="@c.Id">edit</a> </td>*@
+              <td>
+                  <button onclick="whenClick(@c.Id)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                     edit
+                  </button>
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Course/AddCourse/"  class="btn btn-success">Add</a>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body py-4">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    function whenClick(id){
+       $.ajax({
+                  url:"/Course/updateCourseAsPartial/"+id,
+                  success: function(result){
+                      console.log(result)
+                          $(".modal-body").html(result)
+                    }
+             });
+    }
+</script>

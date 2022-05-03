@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "AddIns";
+}
+
+@model AddInsVM
+
+
+
+
+
+<form method="post" action="/Instructor/SaveIns/" enctype="multipart/form-data">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">name</label>
+    <input name="Name" value="@Model.Name" type="text" class="form-control" id="exampleInputEmail1"
+    aria-describedby="emailHelp" 
+    >
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label  for="exampleInputPassword1">address</label>
+    <input name="address" value="@Model.address" type="text" class="form-control" id="exampleInputPassword1" >
+  </div>
+
+  <div class="form-group">
+    <label  for="exampleInputPassword1">salary</label>
+    <input name="salary" value="@Model.salary" type="text" class="form-control" id="exampleInputPassword1" >
+  </div>
+
+
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Example file input</label>
+    <input name="image" value="@Model.image" type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select name="dept_id"  class="form-control" id="depts" onchange="whenChangeDept()">
+      @foreach ( Department d in @Model.depts)
+       {
+                if (@Model.dept_id == d.Id)
+                {
+                    <option selected  value="@d.Id" >@d.Name</option>
+                }
+                else
+                {
+                     <option  value="@d.Id" >@d.Name</option>
+                }
+        }
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select    name="crs_id"  class="form-control" id="courses">
+    
+    </select>
+  </div>
+
+  <input type="submit" class="btn btn-primary">Submit</input>
+</form>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    function whenChangeDept(){
+        console.log("hi")
+        $("#courses").html("")
+        $.ajax({
+                  url:"/Course/coursesAsJson/"+$("#depts").val(),
+                  success: function(result){
+                      console.log(result);
+                          for(var i=0;i<result.length;i++){
+                              $("#courses").append("<option value="+result[0].id+" >"+result[0].name+"</option>")
+                          }
+                    }
+             });
+    }
+    </script>

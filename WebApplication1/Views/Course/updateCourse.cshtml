@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "updateCourse";
+}
+@model Course
+@{
+          SelectList deptItems=new SelectList(ViewBag.depts,"Id","Name");
+}
+<form asp-controller="Course" asp-action="updateSaveCourse" asp-route-Id="@Model.Id" method="post">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" class="form-control" />
+    <span  asp-validation-for="Name" class="text-danger"></span>
+
+    <label asp-for="degree"></label>
+    <input asp-for="degree" class="form-control" />
+    <span  asp-validation-for="degree" class="text-danger"></span>
+
+    <label asp-for="minDegree"></label>
+    <input asp-for="minDegree" class="form-control" />
+    <span  asp-validation-for="minDegree" class="text-danger"></span>
+    
+    <label asp-for="dept_id"></label>
+    <select asp-for="dept_id" asp-items="deptItems" class="form-control"></select>
+    <input type="submit" value="Create" class="btn btn-success" />
+    <span  asp-validation-for="dept_id" class="text-danger"></span>
+
+</form>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

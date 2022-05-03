@@ -1,0 +1,17 @@
+﻿
+@model Instructor;
+
+
+
+
+
+<tr>
+     <td>@Model.Name</td>
+     <td>@Model.address</td>
+     <td>@Model.salary</td>
+     <td>@Model.crs.Name</td>
+     <td>@Model.dept.Name</td>
+     <td><img style="width:30px;height:30px;" src="/images/@Model.image" /></td>
+     <td> <a href="/Instructor/getInstructor/@Model.Id">details</a> </td>
+     <td> <a href="/Instructor/UpdateIns/@Model.Id" class="btn btn-warning"> edit </a> </td>
+</tr>

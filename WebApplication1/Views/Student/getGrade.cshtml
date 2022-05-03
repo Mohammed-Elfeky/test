@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "getGrade";
+}
+
+
+
+
+
+@model getAllGrades
+
+
+
+
+     <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">subject</th>
+      <th scope="col">grade</th>
+      <th scope="col">status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+            <tr>
+              <td>@Model.name</td>
+              <td style="color:@Model.color;">@Model.subject</td>
+              <td>@Model.grade</td>
+              <td>@Model.status</td>
+            </tr>
+    </tbody>
+</table>
+

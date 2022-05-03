@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "AddCourse";
+  
+}
+@model Course
+@{
+          SelectList deptItems=new SelectList(ViewBag.depts,"Id","Name");
+}
+<form asp-controller="Course"  asp-action="SaveCourse" method="post">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" class="form-control" />
+    <br />
+    <span  asp-validation-for="Name" class="text-danger"></span>
+
+    <label asp-for="degree"></label>
+    <input asp-for="degree" class="form-control" />
+    <br />
+    <span  asp-validation-for="degree" class="text-danger"></span>
+
+    <label asp-for="minDegree"></label>
+    <input asp-for="minDegree" class="form-control" />
+    <br />
+    <span  asp-validation-for="minDegree" class="text-danger"></span>
+    
+    <label asp-for="dept_id"></label>
+    <select asp-for="dept_id" asp-items="deptItems" class="form-control"></select>
+    <br />
+    <span  asp-validation-for="minDegree" class="text-danger"></span>
+
+    <input type="submit" value="Create" class="btn btn-success" />
+</form>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

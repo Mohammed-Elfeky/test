@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Show";
+     var OID = ViewData["o_id"] as int?;
+}
+
+@model List<cartItenVM>
+
+<div>
+    @{
+        if(Model!=null){
+            foreach (var item in Model)
+            {
+                <div>
+                    <span>@item.name</span>
+                    <span>@item.quantity</span>
+                </div>
+            }
+        <a asp-controller="Cart" asp-Action="Submit" class="btn btn-primary" asp-route-id="@OID">submit</a>
+        }
+        else
+        {
+            <h1>u dont have products in the cart</h1>
+        }
+    }
+</div>
+

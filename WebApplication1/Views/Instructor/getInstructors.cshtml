@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "getInstructors";
+}
+@model List<Instructor>
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">addess</th>
+      <th scope="col">salary</th>
+      <th scope="col">course</th>
+      <th scope="col">deartment</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+   
+        @foreach (Instructor ins in @Model)
+        {
+            <partial name="_row" model="ins"/>
+          @*  <tr>
+              <td>@ins.Name</td>
+              <td>@ins.address</td>
+              <td>@ins.salary</td>
+              <td>@ins.crs.Name</td>
+              <td>@ins.dept.Name</td>
+              <td><img style="width:30px;height:30px;" src="/images/@ins.image" /></td>
+              <td> <a href="/Instructor/getInstructor/@ins.Id">details</a> </td>
+              <td> <a href="/Instructor/UpdateIns/@ins.Id" class="btn btn-warning"> edit </a> </td>
+            </tr>*@
+        }
+    </tbody>
+</table>
+
+<a href="/Instructor/AddIns/"  class="btn btn-success">Add</a>

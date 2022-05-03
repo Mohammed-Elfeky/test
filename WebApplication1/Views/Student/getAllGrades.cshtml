@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "getAllGrades";
+}
+
+@model List<getAllGrades>
+
+
+
+
+     <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">subject</th>
+      <th scope="col">grade</th>
+      <th scope="col">status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+   
+   
+        @foreach (getAllGrades course  in @Model)
+        {
+            <tr>
+              <td>@course.name</td>
+              <td style="color:@course.color;">@course.subject</td>
+              <td>@course.grade</td>
+              <td>@course.status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
